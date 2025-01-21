@@ -11,4 +11,5 @@ class Tester extends Model
         'email',
         'phone_number',
     ];
+    protected $hidden =['userId'];
 }

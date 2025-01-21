@@ -74,7 +74,11 @@ class textController extends Controller
 
     return redirect()->route('welcome')->with('message','user created succefully');
 
+    }
 
-
+    public function edit($userId){
+         $user = Tester::findOrFail(decrypt($userId));
+            return view('users.edit', compact('user'));
+        
     }
 }

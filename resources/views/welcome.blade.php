@@ -29,7 +29,7 @@
       <td>{{$tester->email}}</td>
       <td>{{$tester->phone_number}}</td>
       <td>
-      <a href="" class="btn btn-primary">Edit</a>
+      <a href="{{ route('edit.user', encrypt($tester->id)) }}" class="btn btn-primary">Edit</a>
       <a href="" class="btn btn-danger">Delete</a>
       </td>
     </tr>
