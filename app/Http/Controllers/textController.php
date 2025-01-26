@@ -76,9 +76,36 @@ class textController extends Controller
 
     }
 
-    public function edit($userId){
-         $user = Tester::findOrFail(decrypt($userId));
-            return view('users.edit', compact('user'));
+   public function edit($id)
+    {
+        $tester = Tester::findOrFail($id);
+        return view('edit', compact('tester'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $tester = Tester::findOrFail($id);
         
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'phone_number' => 'required|numeric'
+        ]);
+
+        $tester->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number
+        ]);
+
+        return redirect()->route('welcome')->with('message', 'User updated successfully');
+    }
+
+    public function delete($id)
+    {
+        $tester = Tester::findOrFail($id);
+        $tester->delete();
+
+        return redirect()->route('welcome')->with('message', 'User deleted successfully');
     }
 }

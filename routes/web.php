@@ -10,6 +10,6 @@ Route :: get('/contact-us',[textController::class,'contactPage'])-> name('contac
 
 Route::get('/create',[textController::class,'create'])-> name('create.user');
 Route::post('/save',[textController::class,'save'])-> name('save.user');
-
-Route::get('/edit/{userId}',[textController::class,'edit'])-> name('edit.user');
-Route::get('/update',[textController::class,'update'])-> name('update.user');
+Route::get('/edit/{id}', [textController::class, 'edit'])->name('edit.user');
+Route::post('/update/{id}', [textController::class, 'update'])->name('update.user');
+Route::get('/delete/{id}', [textController::class, 'delete'])->name('delete.user');
